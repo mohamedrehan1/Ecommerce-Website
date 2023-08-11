@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-import Cart from "../components/Cart";
+import { useRef, useState } from "react";
+import CartPopup from "./CartPopup";
 import { Transition } from "react-transition-group";
 import NavbarMobile from "./NavbarMobile";
 
@@ -17,6 +17,8 @@ const Navbar = (props) => {
   const cartItems = useSelector((state) => state.cart.totalQuantity);
   const [showCart, setShowCart] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
+  const cartRef = useRef(null);
+  const navbarMobileRef = useRef(null);
 
   const handleCloseCart = () => {
     setShowCart(false);
@@ -34,11 +36,35 @@ const Navbar = (props) => {
 
   return (
     <>
-      <Transition in={showNavbar} timeout={300} mountOnEnter unmountOnExit>
-        {(state) => <NavbarMobile show={state} close={handleCloseNavbar} showNavbar={showNavbar}/>}
+      <Transition
+        nodeRef={navbarMobileRef}
+        in={showNavbar}
+        timeout={300}
+        mountOnEnter
+        unmountOnExit
+      >
+        {(state) => (
+          <div ref={navbarMobileRef}>
+            <NavbarMobile
+              show={state}
+              close={handleCloseNavbar}
+              showNavbar={showNavbar}
+            />
+          </div>
+        )}
       </Transition>
-      <Transition in={showCart} timeout={300} mountOnEnter unmountOnExit>
-        {(state) => <Cart show={state} close={handleCloseCart} />}
+      <Transition
+        nodeRef={cartRef}
+        in={showCart}
+        timeout={300}
+        mountOnEnter
+        unmountOnExit
+      >
+        {(state) => (
+          <div ref={cartRef}>
+            <CartPopup show={state} close={handleCloseCart} />
+          </div>
+        )}
       </Transition>
       <div className="relative">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10 container mx-auto">

@@ -1,7 +1,0 @@
-.group:hover .element {
-  opacity: 0.7;
-}
-
-.element:hover {
-  opacity: 1 !important;
-}

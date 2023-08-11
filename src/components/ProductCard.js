@@ -1,5 +1,4 @@
 import React from "react";
-import classes from "../pages/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -22,7 +21,7 @@ const ProductCard = (props) => {
 
   return (
     <div>
-      <div className={`${classes.group} group relative cursor-pointer`}>
+      <div className={` group relative cursor-pointer`}>
         <Link to={`/shop/${props.productData.id}`}>
           <img
             className="mb-3"
@@ -32,7 +31,7 @@ const ProductCard = (props) => {
           />
         </Link>
         <div
-          className={`${classes.element} group/item transition-all opacity-0 invisible group-hover:visible absolute top-5 right-5 cursor-pointer h-8 w-8 shadow-md bg-white rounded-[50%] flex items-center justify-center`}
+          className={`element group/item transition-all opacity-0 invisible group-hover:visible absolute top-5 right-5 cursor-pointer h-8 w-8 shadow-md bg-white rounded-[50%] flex items-center justify-center`}
           onClick={addItemToCart}
         >
           <FontAwesomeIcon

@@ -16,8 +16,6 @@ module.exports = {
         navbar: "#2c541d",
         globalcolor1: "#2c541d",
         globalcolor2: "#74a84a",
-        globalcolor3: "#74a84a",
-        globalcolor4: "#f6f8f5",
         borderColor: "#eae9ec",
         borderColor2: "#d9d9d9",
         textColor: "#585858",

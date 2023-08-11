@@ -5,26 +5,30 @@ import { faCartShopping, faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 import customer1 from "../assets/imgs/customer1.jpeg";
 import customer2 from "../assets/imgs/customer2.jpg";
 import customer3 from "../assets/imgs/customer3.jpg";
-import poster1 from "../assets/products/poster-v1.jpg";
-import poster2 from "../assets/products/poster-v2.jpg";
-import poster3 from "../assets/products/poster-v3.jpg";
-import classes from "./Home.module.css";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../store/cart-slice";
+import { useState } from "react";
+import data from "../store/data";
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const addItemToCart = () => {
+  const [pulseAnimation, setPulseAnimation] = useState(0);
+
+  const bestSeller = data.slice(6, 9);
+
+  const addItemToCart = (item) => {
     dispatch(
       cartActions.addItemToCart({
-        id: "pv1",
-        price: 23.99,
+        id: item.id,
+        price: item.price,
+        name: item.name,
+        img: item.url,
         quantity: 1,
-        name: "poster v1",
       })
     );
   };
+
   return (
     <>
       <div
@@ -45,7 +49,7 @@ const Home = () => {
           <div>
             <button className="bg-globalcolor2 tracking-widest px-7 py-3 lg:px-10 hover:bg-globalcolor1 transition-colors duration-300 mt-7 w-auto">
               <Link
-                to={"shop"}
+                to={"/shop"}
                 className=" text-white text-sm md:text-base lg:text-lg"
               >
                 SHOP NOW
@@ -61,74 +65,42 @@ const Home = () => {
             Best Seller
           </h2>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(155px,1fr))] gap-5 justify-items-center">
-            <div className=" ">
-              <div className={`${classes.group} group relative cursor-pointer`}>
-                <Link to={"/shop/poster-v1"}>
-                  <img className="mb-3" src={poster1} loading="lazy" alt="" />
-                </Link>
-                <div
-                  className={`${classes.element} group/item transition-all opacity-0 invisible group-hover:visible absolute top-5 right-5 cursor-pointer h-8 w-8 shadow-md bg-white rounded-[50%] flex items-center justify-center`}
-                  onClick={addItemToCart}
-                >
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    size="sm"
-                    style={{ color: "#74a84a" }}
-                  />
-                  <div className="absolute transition-all opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible right-10 z-20 whitespace-nowrap text-sm font-normal text-white bg-[#74a84a] rounded-[3px] px-4 py-1 after:content-[''] after:absolute after:-right-[10px] after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-0 after:border-[5px] after:border-l-globalcolor2 after:border-r-transparent after:border-y-transparent">
-                    Add to cart
+            {bestSeller.map((item) => (
+              <div key={item.id}>
+                <div className={`group relative cursor-pointer`}>
+                  <Link to={"/shop/poster-v1"}>
+                    <img
+                      className="mb-3"
+                      src={item.url}
+                      loading="lazy"
+                      alt=""
+                    />
+                  </Link>
+                  <div
+                    className={`element group/item transition-all opacity-0 invisible group-hover:visible absolute top-5 right-5 cursor-pointer h-8 w-8 shadow-md bg-white rounded-[50%] flex items-center justify-center`}
+                    onClick={() => {
+                      addItemToCart(item);
+                      setPulseAnimation(1);
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      size="sm"
+                      style={{ color: "#74a84a" }}
+                      className="image"
+                      onAnimationEnd={() => setPulseAnimation(0)}
+                      pulse-animation={pulseAnimation}
+                    />
+                    <div className="absolute transition-all opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible right-10 z-20 whitespace-nowrap text-sm font-normal text-white bg-[#74a84a] rounded-[3px] px-4 py-1 after:content-[''] after:absolute after:-right-[10px] after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-0 after:border-[5px] after:border-l-globalcolor2 after:border-r-transparent after:border-y-transparent">
+                      Add to cart
+                    </div>
                   </div>
                 </div>
+                <p className="text-textColor text-base mb-1">Posters</p>
+                <p className="font-medium text-lg mb-1">Poster V1</p>
+                <p className="font-bold text-base text-textColor">$23.99</p>
               </div>
-              <p className="text-textColor text-base mb-1">Posters</p>
-              <p className="font-medium text-lg mb-1">Poster V1</p>
-              <p className="font-bold text-base text-textColor">$23.99</p>
-            </div>
-            <div className="">
-              <div className={`${classes.group} group relative cursor-pointer`}>
-                <img className="mb-3" src={poster2} alt="" />
-                <div
-                  className={`${classes.element} group/item transition-all invisible hover:opacity-100 opacity-0 group-hover:visible group-hover:opacity-70 absolute top-5 right-5 cursor-pointer h-8 w-8 shadow-md  bg-white rounded-[50%] flex items-center justify-center`}
-                >
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    size="sm"
-                    style={{ color: "#74a84a" }}
-                    className=""
-                  />
-                  <div className="absolute transition-all opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible right-10 z-20 whitespace-nowrap text-sm font-normal text-white bg-[#74a84a] rounded-[3px] px-4 py-1 after:content-[''] after:absolute after:-right-[10px] after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-0 after:border-[5px] after:border-l-globalcolor2 after:border-r-transparent after:border-y-transparent">
-                    Add to cart
-                  </div>
-                </div>
-              </div>
-              <p className="text-textColor text-base mb-1">Posters</p>
-              <p className="font-medium text-lg mb-1">Poster V2</p>
-              <p className="font-bold text-base text-textColor">$17.99</p>
-            </div>
-            <div className="">
-              <div
-                className={`${classes.group} relative group cursor-pointer`}
-                onClick={() => {}}
-              >
-                <img className="mb-3" src={poster3} alt="" />
-                <div
-                  className={`${classes.element} group/item transition-all hover:opacity-100 opacity-0 invisible group-hover:visible group-hover:opacity-70 absolute top-5 right-5 cursor-pointer h-8 w-8 shadow-md bg-white rounded-[50%] flex items-center justify-center`}
-                >
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    size="sm"
-                    style={{ color: "#74a84a" }}
-                    className=""
-                  />
-                  <div className="absolute transition-all opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible right-10 z-20 whitespace-nowrap text-sm font-normal text-white bg-[#74a84a] rounded-[3px] px-4 py-1 after:content-[''] after:absolute after:-right-[10px] after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-0 after:border-[5px] after:border-l-globalcolor2 after:border-r-transparent after:border-y-transparent">
-                    Add to cart
-                  </div>
-                </div>
-              </div>
-              <p className="text-textColor text-base mb-1">Posters</p>
-              <p className="font-medium text-lg mb-1">Poster V3</p>
-              <p className="font-bold text-base text-textColor">$14.99</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

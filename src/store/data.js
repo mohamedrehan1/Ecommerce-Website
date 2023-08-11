@@ -27,7 +27,7 @@ const data = [
   {
     id: "postcard-v1",
     name: "Postcard V1",
-    price: 10.99,
+    price: 10,
     url: postcard1,
     category: "Postcards",
     bigImage: postcard1BigImage,
@@ -58,7 +58,7 @@ const data = [
   {
     id: "postcard-v2",
     name: "Postcard V2",
-    price: 15.99,
+    price: 15,
     url: postcard2,
     category: "Postcards",
     bigImage: postcard2BigImage,
@@ -89,7 +89,7 @@ const data = [
   {
     id: "postcard-v3",
     name: "Postcard V3",
-    price: 23.99,
+    price: 23,
     url: postcard3,
     category: "Postcards",
     bigImage: postcard3BigImage,
@@ -120,7 +120,7 @@ const data = [
   {
     id: "postcard-v4",
     name: "Postcard V4",
-    price: 29.99,
+    price: 29,
     url: postcard4,
     category: "Postcards",
     bigImage: postcard4BigImage,
@@ -151,7 +151,7 @@ const data = [
   {
     id: "postcard-v5",
     name: "Postcard V5",
-    price: 12.99,
+    price: 12,
     url: postcard5,
     category: "Postcards",
     bigImage: postcard5BigImage,
@@ -182,7 +182,7 @@ const data = [
   {
     id: "postcard-v6",
     name: "Postcard V6",
-    price: 28.99,
+    price: 28,
     url: postcard6,
     category: "Postcards",
     bigImage: postcard6BigImage,
@@ -213,7 +213,7 @@ const data = [
   {
     id: "poster-v1",
     name: "Poster V1",
-    price: 21.99,
+    price: 21,
     url: poster1,
     category: "Posters",
     bigImage: poster1BigImage,
@@ -243,7 +243,7 @@ const data = [
   {
     id: "poster-v2",
     name: "Poster V2",
-    price: 15.99,
+    price: 15,
     url: poster2,
     category: "Posters",
     bigImage: poster2BigImage,
@@ -273,7 +273,7 @@ const data = [
   {
     id: "poster-v3",
     name: "Poster V3",
-    price: 18.99,
+    price: 18,
     url: poster3,
     category: "Posters",
     bigImage: poster3BigImage,
@@ -303,7 +303,7 @@ const data = [
   {
     id: "poster-v4",
     name: "Poster V4",
-    price: 23.99,
+    price: 23,
     url: poster4,
     category: "Posters",
     bigImage: poster4BigImage,
@@ -333,7 +333,7 @@ const data = [
   {
     id: "poster-V5",
     name: "Poster V5",
-    price: 13.99,
+    price: 13,
     url: poster5,
     category: "Posters",
     bigImage: poster5BigImage,
@@ -363,7 +363,7 @@ const data = [
   {
     id: "poster-v6",
     name: "Poster V6",
-    price: 10.99,
+    price: 10,
     url: poster6,
     category: "Posters",
     bigImage: poster6BigImage,
